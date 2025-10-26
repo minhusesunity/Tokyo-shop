@@ -54,7 +54,6 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme, activePage, setActi
             <nav className="flex items-center space-x-1">
                 <NavLink page="shop" activePage={activePage} setActivePage={setActivePage}>Shop</NavLink>
                 <NavLink page="contact" activePage={activePage} setActivePage={setActivePage}>Contact</NavLink>
-                <NavLink page="deployment" activePage={activePage} setActivePage={setActivePage}>Deployment Guide</NavLink>
             </nav>
             <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
           </div>

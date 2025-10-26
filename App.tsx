@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Shop from './pages/Shop';
 import Contact from './pages/Contact';
-import Deployment from './pages/Deployment';
 import { Theme } from './types';
 
 const App: React.FC = () => {
@@ -35,8 +34,6 @@ const App: React.FC = () => {
             return <Shop />;
         case 'contact':
             return <Contact />;
-        case 'deployment':
-            return <Deployment />;
         default:
             return <Shop />;
     }
