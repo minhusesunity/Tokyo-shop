@@ -3,12 +3,9 @@ import Header from './components/Header';
 import Shop from './pages/Shop';
 import Contact from './pages/Contact';
 import Deployment from './pages/Deployment';
-
-type Tab = 'shop' | 'contact' | 'deployment';
-export type Theme = 'light' | 'dark';
+import { Theme } from './types';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<Tab>('shop');
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
@@ -16,6 +13,7 @@ const App: React.FC = () => {
     }
     return 'light';
   });
+  const [activePage, setActivePage] = useState('shop');
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -30,14 +28,25 @@ const App: React.FC = () => {
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
+  
+  const renderPage = () => {
+    switch(activePage) {
+        case 'shop':
+            return <Shop />;
+        case 'contact':
+            return <Contact />;
+        case 'deployment':
+            return <Deployment />;
+        default:
+            return <Shop />;
+    }
+  }
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-gray-50 dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} theme={theme} toggleTheme={toggleTheme} />
+    <div className="min-h-screen flex flex-col font-sans bg-gray-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
+      <Header theme={theme} toggleTheme={toggleTheme} activePage={activePage} setActivePage={setActivePage} />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {activeTab === 'shop' && <Shop />}
-        {activeTab === 'contact' && <Contact />}
-        {activeTab === 'deployment' && <Deployment />}
+        {renderPage()}
       </main>
     </div>
   );
