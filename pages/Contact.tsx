@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (name.trim() && request.trim() && email.trim() && emailRegex.test(email)) {
-      const recipient = 'tuanminhdoan20@gmail.com';
+      const recipient = 'contact@futuristicartistry.com';
       const subject = `Contact Form Inquiry from ${name}`;
       let body = `
 You've received a new message from your website contact form.

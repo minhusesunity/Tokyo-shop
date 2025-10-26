@@ -19,7 +19,7 @@ const Shop: React.FC = () => {
 
   const handleRequest = () => {
     if (!selectedProduct) return;
-    const recipient = 'tuanminhdoan20@gmail.com';
+    const recipient = 'contact@futuristicartistry.com';
     const subject = `Order Request: ${selectedProduct.name}`;
     const body = `
 Hello,
